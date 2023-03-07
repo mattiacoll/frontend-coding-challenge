@@ -44,6 +44,8 @@ export default createStore({
 
     addWinner( state ) {
       state.winners.push( state.inptName );
+      state.inptName = '';
+      state.showMsg = false;
     },
   },
   modules: {}
