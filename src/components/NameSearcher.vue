@@ -18,7 +18,7 @@
       />
       <el-button 
         @click="$store.dispatch( 'checkName' )"
-        :disabled="$store.state.showMsg"
+        :disabled="$store.state.showMsg || !$store.state.validEmail"
       >Submit</el-button>
     </el-row>
 
@@ -48,6 +48,18 @@ export default {
         this.$store.commit( 'updateInpt', val );
       },
     }
+  },
+  watch: {
+    inptName( newInpt ) {
+
+      if ( newInpt.length < 2 || newInpt.match( /[0-9]/g ) ) {
+        this.$store.commit( 'updateValid', false );
+        return;
+      }
+
+      this.$store.commit( 'updateValid', true );
+
+    },
   }
 }
 </script>

@@ -7,6 +7,7 @@ export default createStore({
     winners:   [],
     foundName: false,
     showMsg:   false,
+    validEmail: false,
   }),
   getters: {},
   actions: {
@@ -47,6 +48,11 @@ export default createStore({
       state.inptName = '';
       state.showMsg = false;
     },
+
+
+    updateValid( state, value ) {
+      state.validEmail = value;
+    }
   },
   modules: {}
 })
