@@ -9,6 +9,7 @@ export default createStore({
     showMsg:   false,
     validEmail: false,
     error:      '',
+    duplicate:  false,
   }),
   getters: {},
   actions: {
@@ -34,6 +35,13 @@ export default createStore({
 
       let found = false;
 
+      if ( state.winners.indexOf( state.inptName ) !== -1 ) {
+        state.foundName = found;
+        state.showMsg = true;
+        state.duplicate = true;
+        return;
+      }
+
       for ( let i = 0; i < names.length; i++ ) {
         if ( state.inptName === names[i].name ) {
           found = true;
@@ -48,6 +56,7 @@ export default createStore({
 
     dismiss( state ) {
       state.showMsg = false;
+      state.duplicate = false;
     },
 
     addWinner( state ) {
