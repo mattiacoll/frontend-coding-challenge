@@ -1,27 +1,36 @@
 <template>
-  <div class="container"></div>
+  <div class="container">
 
-  <input 
-    type="text"
-    placeholder="Type you name"
-    v-model="inptName"
-    :disabled="$store.state.showMsg"
-  >
-  <button 
-    @click="$store.dispatch( 'checkName' )"
-    :disabled="$store.state.showMsg"
-  >Submit</button>
+    <el-row>
+      <el-input 
+        type="text"
+        placeholder="Type you name"
+        v-model="inptName"
+        :disabled="$store.state.showMsg"
+        clearable 
+      />
+      <el-button 
+        @click="$store.dispatch( 'checkName' )"
+        :disabled="$store.state.showMsg"
+      >Submit</el-button>
+    </el-row>
+
+  </div>
 
   <name-search-response></name-search-response>
 </template>
 
 <script>
 import NameSearchResponse from '@/components/NameSearchResponse.vue'
+import { ElInput, ElButton, ElRow } from 'element-plus';
 
 export default {
   name: 'NameSearcher',
   components: {
     NameSearchResponse,
+    ElInput,
+    ElButton,
+    ElRow,
   },
   computed: {
     inptName: {

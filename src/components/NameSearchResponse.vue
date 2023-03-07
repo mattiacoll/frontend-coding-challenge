@@ -1,33 +1,59 @@
 <template>
   <div class="container">
 
-    <div v-if="$store.state.showMsg">
+    <el-dialog
+      title="Tips"
+      width="30%"
+      v-model="dialogVisible"
+    >
+
+      <template #header>
+        <span>Result</span>
+      </template>
+
       <div v-if="$store.state.foundName">
         <p>Congratulations, <em>{{ $store.state.inptName }}</em> is a lucky name! You've won a prize. Will you accept it?</p>
-        <a
+
+        <el-button
           @click.prevent="$store.commit( 'addWinner' )"
-          href="#."
-        >Accept</a>
-        <a
+          type="success"
+        >Accept</el-button>
+        <el-button
           @click.prevent="$store.commit( 'dismiss' )"
-          href="#."
-        >Reject</a>
+          type="danger"
+        >Reject</el-button>
       </div>
       <div v-else>
         <p>I'm sorry, <em>{{ $store.state.inptName }}</em> is not in today's list of lucky names.</p>
-        <a
+        <el-button
           @click.prevent="$store.commit( 'dismiss' )"
-          href="#."
-        >Ok</a>
+          type="danger"
+        >Ok</el-button>
       </div>
-    </div>
+    </el-dialog>
 
   </div>
 </template>
 
 <script>
+import { ElButton, ElDialog } from 'element-plus';
+
 export default {
   name: 'NameSearchResponse',
+  components: {
+    ElButton,
+    ElDialog,
+  },
+  computed: {
+    dialogVisible: {
+      get() {
+        return this.$store.state.showMsg;
+      },
+      set() {
+        this.$store.commit( 'dismiss' );
+      }
+    }
+  }
 }
 </script>
 
