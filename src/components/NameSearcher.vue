@@ -1,6 +1,13 @@
 <template>
   <div class="container">
 
+    <el-alert
+      type="error"
+      :title="$store.state.error"
+      v-if="$store.state.error !== ''"
+      @close="$store.commit( 'closeErr' )"
+    />
+
     <div v-if="$store.state.winners.length">
       <h2>Today's winners:</h2>
       <div v-for="(winner, index) in $store.state.winners">
@@ -29,7 +36,7 @@
 
 <script>
 import NameSearchResponse from '@/components/NameSearchResponse.vue'
-import { ElInput, ElButton, ElRow } from 'element-plus';
+import { ElInput, ElButton, ElRow, ElMessage, ElAlert } from 'element-plus';
 
 export default {
   name: 'NameSearcher',
@@ -38,6 +45,8 @@ export default {
     ElInput,
     ElButton,
     ElRow,
+    ElMessage,
+    ElAlert,
   },
   computed: {
     inptName: {

@@ -8,20 +8,27 @@ export default createStore({
     foundName: false,
     showMsg:   false,
     validEmail: false,
+    error:      '',
   }),
   getters: {},
   actions: {
     checkName({ commit }) {
 
-      getAll()
+      commit( 'closeErr' );
+
+      getAll( true )
         .then( ( names ) => {
           commit( 'checkName', names );
+        })
+        .catch( ( err ) => {
+          commit( 'showError', err );
         });
     },
   },
   mutations: {
     updateInpt( state, val ) {
       state.inptName = val;
+      state.error = '';
     },
     checkName( state, names ) {
 
@@ -52,6 +59,14 @@ export default createStore({
 
     updateValid( state, value ) {
       state.validEmail = value;
+    },
+
+    showError( state, err ) {
+      state.error = err;
+    },
+
+    closeErr( state ) {
+      state.error = '';
     }
   },
   modules: {}
