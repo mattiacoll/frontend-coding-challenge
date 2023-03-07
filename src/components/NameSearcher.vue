@@ -9,10 +9,8 @@
     />
 
     <div v-if="$store.state.winners.length">
-      <h2>Today's winners:</h2>
-      <div v-for="(winner, index) in $store.state.winners">
-        <p :key="index">{{ winner }}</p>
-      </div>
+      <winners />
+      <router-link to="/winners">Show winners</router-link>
     </div>
 
     <el-row>
@@ -37,6 +35,8 @@
 <script>
 import NameSearchResponse from '@/components/NameSearchResponse.vue'
 import { ElInput, ElButton, ElRow, ElMessage, ElAlert } from 'element-plus';
+import Winners from '@/components/Winners.vue'
+import { RouterLink } from 'vue-router';
 
 export default {
   name: 'NameSearcher',
@@ -47,6 +47,8 @@ export default {
     ElRow,
     ElMessage,
     ElAlert,
+    Winners,
+    RouterLink,
   },
   computed: {
     inptName: {
