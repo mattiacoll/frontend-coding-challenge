@@ -1,6 +1,6 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
 import { getAll } from '@/api/peopleApi';
-import VuexPersistence from 'vuex-persist'
+import VuexPersistence from 'vuex-persist';
 
 export default createStore({
   state: () => ({
@@ -105,10 +105,10 @@ export default createStore({
       state.day++;
       state.winners.push([]);
 
-    }
+    },
   },
   modules: {},
   plugins: [
-    new VuexPersistence().plugin
-  ]
-})
+    new VuexPersistence().plugin,
+  ],
+});

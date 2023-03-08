@@ -1,12 +1,10 @@
 <template>
   <div class="container">
-
     <el-dialog
+      v-model="dialogVisible"
       title="Tips"
       width="30%"
-      v-model="dialogVisible"
     >
-
       <template #header>
         <span>Result</span>
       </template>
@@ -14,35 +12,40 @@
       <div v-if="$store.state.duplicate">
         <p>I'm sorry, {{ $store.state.inptName }} has already received their prize today!</p>
         <el-button
-          @click.prevent="$store.commit( 'dismiss' )"
           type="danger"
-        >Ok</el-button>
+          @click.prevent="$store.commit( 'dismiss' )"
+        >
+          Ok
+        </el-button>
       </div>
       <div v-else>
-
         <div v-if="$store.state.foundName">
           <p>Congratulations, <em>{{ $store.state.inptName }}</em> is a lucky name! You've won a prize. Will you accept it?</p>
 
           <el-button
-            @click.prevent="$store.commit( 'addWinner' )"
             type="success"
-          >Accept</el-button>
+            @click.prevent="$store.commit( 'addWinner' )"
+          >
+            Accept
+          </el-button>
           <el-button
-            @click.prevent="$store.commit( 'dismiss' )"
             type="danger"
-          >Reject</el-button>
+            @click.prevent="$store.commit( 'dismiss' )"
+          >
+            Reject
+          </el-button>
         </div>
         <div v-else>
           <p>I'm sorry, <em>{{ $store.state.inptName }}</em> is not in today's list of lucky names.</p>
           <el-button
-            @click.prevent="$store.commit( 'dismiss' )"
             type="danger"
-          >Ok</el-button>
+            @click.prevent="$store.commit( 'dismiss' )"
+          >
+            Ok
+          </el-button>
         </div>
-
       </div>
     </el-dialog>
-
   </div>
 </template>
 
@@ -62,10 +65,10 @@ export default {
       },
       set() {
         this.$store.commit( 'dismiss' );
-      }
-    }
-  }
-}
+      },
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

@@ -1,46 +1,50 @@
 <template>
   <div class="container">
-
     <el-alert
+      v-if="$store.state.error !== ''"
       type="error"
       :title="$store.state.error"
-      v-if="$store.state.error !== ''"
       @close="$store.commit( 'closeErr' )"
     />
 
     <div v-if="$store.state.winners[$store.state.day].length">
       <winners />
-      <router-link to="/winners">Show winners</router-link>
+      <router-link to="/winners">
+        Show winners
+      </router-link>
 
       <el-button
         @click="$store.commit( 'changeDay' )"
-      >Next day</el-button>
+      >
+        Next day
+      </el-button>
     </div>
 
     <el-row>
-      <el-input 
+      <el-input
+        v-model="inptName"
         type="text"
         placeholder="Type you name"
-        v-model="inptName"
         :disabled="$store.state.showMsg"
+        clearable
         @keydown="$store.dispatch( 'checkName', $event )"
-        clearable 
       />
-      <el-button 
-        @click="$store.dispatch( 'checkName' )"
+      <el-button
         :disabled="$store.state.showMsg || !$store.state.validEmail"
-      >Submit</el-button>
+        @click="$store.dispatch( 'checkName' )"
+      >
+        Submit
+      </el-button>
     </el-row>
-
   </div>
 
-  <name-search-response></name-search-response>
+  <name-search-response />
 </template>
 
 <script>
-import NameSearchResponse from '@/components/NameSearchResponse.vue'
+import NameSearchResponse from '@/components/NameSearchResponse.vue';
 import { ElInput, ElButton, ElRow, ElMessage, ElAlert } from 'element-plus';
-import Winners from '@/components/Winners.vue'
+import Winners from '@/components/Winners.vue';
 import { RouterLink } from 'vue-router';
 
 export default {
@@ -63,7 +67,7 @@ export default {
       set( val ) {
         this.$store.commit( 'updateInpt', val );
       },
-    }
+    },
   },
   watch: {
     inptName( newInpt ) {
@@ -76,8 +80,8 @@ export default {
       this.$store.commit( 'updateValid', true );
 
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped lang="scss">

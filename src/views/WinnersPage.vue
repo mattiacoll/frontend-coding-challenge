@@ -1,15 +1,15 @@
 <template>
   <div class="container">
-
     <h2>Winners Page</h2>
     <winners />
-    <router-link to="/">Home</router-link>
-
+    <router-link to="/">
+      Home
+    </router-link>
   </div>
 </template>
 
 <script>
-import Winners from '@/components/Winners.vue'
+import Winners from '@/components/Winners.vue';
 import { RouterLink } from 'vue-router';
 
 export default {
@@ -17,8 +17,8 @@ export default {
   components: {
     Winners,
     RouterLink,
-  }
-}
+  },
+};
 </script>
 
 <style scoped lang="scss">
