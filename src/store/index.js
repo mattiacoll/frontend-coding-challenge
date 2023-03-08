@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import { getAll } from '@/api/peopleApi';
+import VuexPersistence from 'vuex-persist'
 
 export default createStore({
   state: () => ({
@@ -106,5 +107,8 @@ export default createStore({
 
     }
   },
-  modules: {}
+  modules: {},
+  plugins: [
+    new VuexPersistence().plugin
+  ]
 })

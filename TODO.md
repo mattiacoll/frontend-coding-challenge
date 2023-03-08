@@ -9,8 +9,7 @@ Stretch goals:
 - ~~Validate api calls~~
 - ~~Link to winners page~~
 - ~~No duplicate per day~~
-  - Persist change though refreshing the page  
-  _Should be straightforward to implement using [vuex-persist](https://github.com/championswimmer/vuex-persist)_
+  - ~~Persist change though refreshing the page~~
 - ~~Limit 10 names per day~~
   - ~~Change day~~
   - ~~Each subsequent day should not repeat a name~~  
