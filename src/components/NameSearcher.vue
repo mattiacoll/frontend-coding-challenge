@@ -23,6 +23,7 @@
         placeholder="Type you name"
         v-model="inptName"
         :disabled="$store.state.showMsg"
+        @keydown="$store.dispatch( 'checkName', $event )"
         clearable 
       />
       <el-button 
@@ -67,7 +68,7 @@ export default {
   watch: {
     inptName( newInpt ) {
 
-      if ( newInpt.length < 2 || newInpt.match( /[0-9]/g ) ) {
+      if ( newInpt.trim().length < 2 || newInpt.match( /[0-9]/g ) ) {
         this.$store.commit( 'updateValid', false );
         return;
       }

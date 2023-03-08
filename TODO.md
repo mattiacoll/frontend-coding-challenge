@@ -14,8 +14,7 @@ Stretch goals:
 - ~~Limit 10 names per day~~
   - ~~Change day~~
   - ~~Each subsequent day should not repeat a name~~  
-- Press enter to submit the name  
-  _We could add a `@keydown` event on the input which calls `checkName` **additional validation should be done by checking event.type**_
+- ~~Press enter to submit the name~~  
 - Add linting and quality control  
   _could be implemented using eslint or prettier_
 - todo preparation

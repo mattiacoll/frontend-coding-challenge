@@ -16,9 +16,12 @@ export default createStore({
   }),
   getters: {},
   actions: {
-    checkName({ commit }) {
+    checkName({ commit }, evt ) {
 
       commit( 'closeErr' );
+
+      if ( evt !== undefined && evt.type === 'keydown' && evt.key !== 'Enter' )
+        return;
 
       getAll( true )
         .then( ( names ) => {
