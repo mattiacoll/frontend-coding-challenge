@@ -4,12 +4,15 @@ import { getAll } from '@/api/peopleApi';
 export default createStore({
   state: () => ({
     inptName:  '',
-    winners:   [],
+    winners:   [
+      [],
+    ],
     foundName: false,
     showMsg:   false,
     validEmail: false,
     error:      '',
     duplicate:  false,
+    day:        0,
   }),
   getters: {},
   actions: {
@@ -35,7 +38,21 @@ export default createStore({
 
       let found = false;
 
-      if ( state.winners.indexOf( state.inptName ) !== -1 ) {
+      if ( state.day - 1 >= 0 && state.winners[state.day - 1].indexOf( state.inptName ) !== -1 ) {
+        state.foundName = found;
+        state.showMsg = true;
+        state.duplicate = true;
+        return;
+      }
+
+      if ( state.winners[state.day].indexOf( state.inptName ) !== -1 ) {
+        state.foundName = found;
+        state.showMsg = true;
+        state.duplicate = true;
+        return;
+      }
+
+      if ( state.winners[state.day].length === 10 ) {
         state.foundName = found;
         state.showMsg = true;
         state.duplicate = true;
@@ -60,7 +77,7 @@ export default createStore({
     },
 
     addWinner( state ) {
-      state.winners.push( state.inptName );
+      state.winners[state.day].push( state.inptName );
       state.inptName = '';
       state.showMsg = false;
     },
@@ -76,6 +93,14 @@ export default createStore({
 
     closeErr( state ) {
       state.error = '';
+    },
+
+
+    changeDay( state ) {
+
+      state.day++;
+      state.winners.push([]);
+
     }
   },
   modules: {}

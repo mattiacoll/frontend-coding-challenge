@@ -11,10 +11,9 @@ Stretch goals:
 - ~~No duplicate per day~~
   - Persist change though refreshing the page  
   _Should be straightforward to implement using [vuex-persist](https://github.com/championswimmer/vuex-persist)_
-- Limit 10 names per day 
-  - Change day
-  - Each subsequent day should not repeat a name  
-  _This could be implemented using a 2d array for the winners, where `winners[i][j]` corresponds to the j<sup>th</sup> winner on the i<sup>th</sup> day_
+- ~~Limit 10 names per day~~
+  - ~~Change day~~
+  - ~~Each subsequent day should not repeat a name~~  
 - Press enter to submit the name  
   _We could add a `@keydown` event on the input which calls `checkName` **additional validation should be done by checking event.type**_
 - Add linting and quality control  

@@ -8,9 +8,13 @@
       @close="$store.commit( 'closeErr' )"
     />
 
-    <div v-if="$store.state.winners.length">
+    <div v-if="$store.state.winners[$store.state.day].length">
       <winners />
       <router-link to="/winners">Show winners</router-link>
+
+      <el-button
+        @click="$store.commit( 'changeDay' )"
+      >Next day</el-button>
     </div>
 
     <el-row>
