@@ -14,7 +14,7 @@ Stretch goals:
   - ~~Change day~~
   - ~~Each subsequent day should not repeat a name~~  
 - ~~Press enter to submit the name~~  
-- Add linting and quality control  
+- ~~Add linting and quality control~~  
   _could be implemented using eslint or prettier_
 - todo preparation
   * Assuming the list of names are fetched from an actual api, how would you implement authentication, rate limiting handling, error handling, api unavailability? - What kind of retry strategies you’d imagine implementing?  
